@@ -1,24 +1,25 @@
 import json
 
+from app.models.MatchModel import Match
 from app.models.PlayerModel import Player
 from app.models.TeamModel import Team
 
 
 def main():
     # load data
-    with open('mocks/players.json', 'r') as file:
+    with open('datasets/players.json', 'r') as file:
         players_data = json.load(file)
 
-    with open('mocks/teams.json', 'r') as file:
+    with open('datasets/teams.json', 'r') as file:
         teams_data = json.load(file)
 
     # create teams and players objects
-    teams = set()
-    players = set()
+    teams = []
+    players = []
 
     # players objects
     for player_data in players_data:
-        players.add(
+        players.append(
             Player(
                 player_data["player_id"],
                 player_data["name"],
@@ -31,7 +32,7 @@ def main():
 
     # teams objects
     for team_data in teams_data:
-        teams.add(
+        teams.append(
             Team(
                 team_data["team_id"],
                 team_data["name"]
@@ -45,6 +46,11 @@ def main():
                 team.players.add(player)
 
     print(f'Teams:\n {[str(team) for team in teams]}')
+
+    # play some match
+    match = Match(teams[1], teams[2])
+    match.play_match()
+    print(f'\nMatch: {str(match)}')
 
 
 if __name__ == "__main__":
