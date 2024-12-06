@@ -27,11 +27,11 @@ class Match:
         if_guests_scored, guests_goal_time = self._attempt_goal(self.guest_team, current_time, segment_duration)
 
         if if_hosts_scored:
-            print(f'GOAL for {self.host_team.name} ({hosts_goal_time} min)')
+            # print(f'GOAL for {self.host_team.name} ({hosts_goal_time} min)')
             self.score[self.host_team.team_id] += 1
 
         if if_guests_scored:
-            print(f'GOAL for {self.guest_team.name} ({guests_goal_time} min)')
+            # print(f'GOAL for {self.guest_team.name} ({guests_goal_time} min)')
             self.score[self.guest_team.team_id] += 1
 
 

@@ -9,7 +9,7 @@ class TeamResource:
 
     def load_teams(self):
         # load data
-        with open('../datasets/teams.json', 'r') as file:
+        with open('./datasets/teams.json', 'r') as file:
             teams_data = json.load(file)
 
         # teams objects
@@ -21,8 +21,8 @@ class TeamResource:
                 )
             )
 
-    @property
     def get_teams(self):
         if not self.teams:
             self.load_teams()
+
         return self.teams

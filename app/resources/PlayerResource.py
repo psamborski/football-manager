@@ -9,7 +9,7 @@ class PlayerResource:
 
     def load_players(self):
         # load data
-        with open('../datasets/players.json', 'r') as file:
+        with open('./datasets/players.json', 'r') as file:
             players_data = json.load(file)
 
         # players objects
@@ -27,7 +27,6 @@ class PlayerResource:
         # print(f'Players:\n {[str(player) for player in players]}')
 
 
-    @property
     def get_players(self):
         if not self.players:
             self.load_players()
