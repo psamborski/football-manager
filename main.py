@@ -1,4 +1,5 @@
 import json
+from random import randint
 
 from app.models.MatchModel import Match
 from app.models.PlayerModel import Player
@@ -29,7 +30,7 @@ def main():
             )
         )
 
-    print(f'Players:\n {[str(player) for player in players]}')
+    # print(f'Players:\n {[str(player) for player in players]}')
 
     # teams objects
     for team_data in teams_data:
@@ -46,14 +47,14 @@ def main():
             if player.team_id == team.team_id:
                 team.players.add(player)
 
-    print(f'Teams:\n {[str(team) for team in teams]}')
+    # print(f'Teams:\n {[str(team) for team in teams]}')
 
     # update teams' power
     for team in teams:
         team.update_team_power()
 
     # play some match
-    match = Match(teams[1], teams[2])
+    match = Match(teams[randint(0, len(teams) - 1)], teams[randint(0, len(teams) - 1)])
     match.play_match()
     print(f'\nMatch: {str(match)}')
 
