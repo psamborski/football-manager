@@ -1,0 +1,142 @@
+[
+  {
+    "player_id": 1,
+    "name": "Marc-André ter Stegen",
+    "position": "GK",
+    "skill_level": 95,
+    "team_id": 1
+  },
+  {
+    "player_id": 2,
+    "name": "Jules Koundé",
+    "position": "DEF",
+    "skill_level": 88,
+    "team_id": 1
+  },
+  {
+    "player_id": 3,
+    "name": "Sergio Busquets",
+    "position": "MID",
+    "skill_level": 92,
+    "team_id": 1
+  },
+  {
+    "player_id": 4,
+    "name": "Robert Lewandowski",
+    "position": "FOR",
+    "skill_level": 96,
+    "team_id": 1
+  },
+  {
+    "player_id": 5,
+    "name": "Thibaut Courtois",
+    "position": "GK",
+    "skill_level": 94,
+    "team_id": 2
+  },
+  {
+    "player_id": 6,
+    "name": "David Alaba",
+    "position": "DEF",
+    "skill_level": 89,
+    "team_id": 2
+  },
+  {
+    "player_id": 7,
+    "name": "Jude Bellingham",
+    "position": "MID",
+    "skill_level": 91,
+    "team_id": 2
+  },
+  {
+    "player_id": 8,
+    "name": "Vinícius Júnior",
+    "position": "FOR",
+    "skill_level": 93,
+    "team_id": 2
+  },
+  {
+    "player_id": 9,
+    "name": "David de Gea",
+    "position": "GK",
+    "skill_level": 90,
+    "team_id": 3
+  },
+  {
+    "player_id": 10,
+    "name": "Harry Maguire",
+    "position": "DEF",
+    "skill_level": 83,
+    "team_id": 3
+  },
+  {
+    "player_id": 11,
+    "name": "Bruno Fernandes",
+    "position": "MID",
+    "skill_level": 87,
+    "team_id": 3
+  },
+  {
+    "player_id": 12,
+    "name": "Marcus Rashford",
+    "position": "FOR",
+    "skill_level": 89,
+    "team_id": 3
+  },
+  {
+    "player_id": 13,
+    "name": "Ederson",
+    "position": "GK",
+    "skill_level": 94,
+    "team_id": 4
+  },
+  {
+    "player_id": 14,
+    "name": "Ruben Dias",
+    "position": "DEF",
+    "skill_level": 91,
+    "team_id": 4
+  },
+  {
+    "player_id": 15,
+    "name": "Kevin De Bruyne",
+    "position": "MID",
+    "skill_level": 96,
+    "team_id": 4
+  },
+  {
+    "player_id": 16,
+    "name": "Erling Haaland",
+    "position": "FOR",
+    "skill_level": 98,
+    "team_id": 4
+  },
+  {
+    "player_id": 17,
+    "name": "Manuel Neuer",
+    "position": "GK",
+    "skill_level": 93,
+    "team_id": 5
+  },
+  {
+    "player_id": 18,
+    "name": "Joshua Kimmich",
+    "position": "DEF",
+    "skill_level": 88,
+    "team_id": 5
+  },
+  {
+    "player_id": 19,
+    "name": "Thomas Müller",
+    "position": "MID",
+    "skill_level": 92,
+    "team_id": 5
+  },
+  {
+    "player_id": 20,
+    "name": "Harry Kane",
+    "position": "FOR",
+    "skill_level": 95,
+    "team_id": 5
+  }
+]
