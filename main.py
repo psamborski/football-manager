@@ -36,6 +36,7 @@ def main():
     # launch CLI
     manager_cli = FootballManagerCLI(teams)
     curses.wrapper(manager_cli.main_menu)
+    logging.info("Exiting Football Manager CLI...")
 
 
 if __name__ == "__main__":

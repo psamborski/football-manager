@@ -61,8 +61,8 @@ class FootballManagerCLI:
 
         # Display Result
         stdscr.clear()
-        stdscr.addstr(0, 0, str(match), curses.A_BOLD)
-        stdscr.addstr(3, 0, "Press any key to return to main menu.")
+        stdscr.addstr(0, 0, repr(match), curses.A_BOLD)
+        stdscr.addstr(5, 0, "Press any key to return to main menu.")
         stdscr.getch()
 
     def main_menu(self, stdscr):

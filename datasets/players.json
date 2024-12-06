@@ -3,7 +3,7 @@
     "player_id": 1,
     "name": "Marc-André ter Stegen",
     "position": "GK",
-    "skill_level": 95,
+    "skill_level": 93,
     "team_id": 1
   },
   {
@@ -15,127 +15,372 @@
   },
   {
     "player_id": 3,
-    "name": "Sergio Busquets",
-    "position": "MID",
-    "skill_level": 92,
+    "name": "Ronald Araújo",
+    "position": "DEF",
+    "skill_level": 89,
     "team_id": 1
   },
   {
     "player_id": 4,
-    "name": "Robert Lewandowski",
-    "position": "FOR",
-    "skill_level": 96,
+    "name": "Frenkie de Jong",
+    "position": "MID",
+    "skill_level": 90,
     "team_id": 1
   },
   {
     "player_id": 5,
+    "name": "Pedri",
+    "position": "MID",
+    "skill_level": 90,
+    "team_id": 1
+  },
+  {
+    "player_id": 6,
+    "name": "Gavi",
+    "position": "MID",
+    "skill_level": 88,
+    "team_id": 1
+  },
+  {
+    "player_id": 7,
+    "name": "Robert Lewandowski",
+    "position": "FWD",
+    "skill_level": 96,
+    "team_id": 1
+  },
+  {
+    "player_id": 8,
+    "name": "Lamine Yamal",
+    "position": "FWD",
+    "skill_level": 87,
+    "team_id": 1
+  },
+  {
+    "player_id": 9,
+    "name": "Raphinha",
+    "position": "FWD",
+    "skill_level": 90,
+    "team_id": 1
+  },
+  {
+    "player_id": 10,
+    "name": "Andreas Christensen",
+    "position": "DEF",
+    "skill_level": 86,
+    "team_id": 1
+  },
+  {
+    "player_id": 11,
+    "name": "Alejandro Balde",
+    "position": "DEF",
+    "skill_level": 84,
+    "team_id": 1
+  },
+  {
+    "player_id": 12,
     "name": "Thibaut Courtois",
     "position": "GK",
     "skill_level": 94,
     "team_id": 2
   },
   {
-    "player_id": 6,
+    "player_id": 13,
     "name": "David Alaba",
     "position": "DEF",
     "skill_level": 89,
     "team_id": 2
   },
   {
-    "player_id": 7,
-    "name": "Jude Bellingham",
+    "player_id": 14,
+    "name": "Eder Militao",
+    "position": "DEF",
+    "skill_level": 88,
+    "team_id": 2
+  },
+  {
+    "player_id": 15,
+    "name": "Fede Valverde",
+    "position": "MID",
+    "skill_level": 90,
+    "team_id": 2
+  },
+  {
+    "player_id": 16,
+    "name": "Luka Modric",
     "position": "MID",
     "skill_level": 91,
     "team_id": 2
   },
   {
-    "player_id": 8,
-    "name": "Vinícius Júnior",
-    "position": "FOR",
+    "player_id": 17,
+    "name": "Jude Bellingham",
+    "position": "MID",
     "skill_level": 93,
     "team_id": 2
   },
   {
-    "player_id": 9,
-    "name": "David de Gea",
-    "position": "GK",
-    "skill_level": 90,
-    "team_id": 3
+    "player_id": 18,
+    "name": "Vinícius Júnior",
+    "position": "FWD",
+    "skill_level": 94,
+    "team_id": 2
   },
   {
-    "player_id": 10,
-    "name": "Harry Maguire",
+    "player_id": 19,
+    "name": "Rodrygo",
+    "position": "FWD",
+    "skill_level": 88,
+    "team_id": 2
+  },
+  {
+    "player_id": 20,
+    "name": "Kylian Mbappe",
+    "position": "FWD",
+    "skill_level": 97,
+    "team_id": 2
+  },
+  {
+    "player_id": 21,
+    "name": "Antonio Rudiger",
     "position": "DEF",
-    "skill_level": 83,
+    "skill_level": 91,
+    "team_id": 2
+  },
+  {
+    "player_id": 22,
+    "name": "Ferland Mendy",
+    "position": "DEF",
+    "skill_level": 85,
+    "team_id": 2
+  },
+  {
+    "player_id": 23,
+    "name": "David Raya",
+    "position": "GK",
+    "skill_level": 88,
     "team_id": 3
   },
   {
-    "player_id": 11,
-    "name": "Bruno Fernandes",
-    "position": "MID",
+    "player_id": 24,
+    "name": "Ben White",
+    "position": "DEF",
     "skill_level": 87,
     "team_id": 3
   },
   {
-    "player_id": 12,
-    "name": "Marcus Rashford",
-    "position": "FOR",
+    "player_id": 25,
+    "name": "William Saliba",
+    "position": "DEF",
+    "skill_level": 90,
+    "team_id": 3
+  },
+  {
+    "player_id": 26,
+    "name": "Jakub Kiwior",
+    "position": "DEF",
+    "skill_level": 84,
+    "team_id": 3
+  },
+  {
+    "player_id": 27,
+    "name": "Declan Rice",
+    "position": "MID",
+    "skill_level": 90,
+    "team_id": 3
+  },
+  {
+    "player_id": 28,
+    "name": "Martin Odegaard",
+    "position": "MID",
+    "skill_level": 93,
+    "team_id": 3
+  },
+  {
+    "player_id": 29,
+    "name": "Bukayo Saka",
+    "position": "MID",
+    "skill_level": 91,
+    "team_id": 3
+  },
+  {
+    "player_id": 30,
+    "name": "Mikel Merino",
+    "position": "MID",
+    "skill_level": 86,
+    "team_id": 3
+  },
+  {
+    "player_id": 31,
+    "name": "Kai Havertz",
+    "position": "FWD",
+    "skill_level": 88,
+    "team_id": 3
+  },
+  {
+    "player_id": 32,
+    "name": "Gabriel Martinelli",
+    "position": "FWD",
+    "skill_level": 86,
+    "team_id": 3
+  },
+  {
+    "player_id": 33,
+    "name": "Gabriel",
+    "position": "DEF",
     "skill_level": 89,
     "team_id": 3
   },
   {
-    "player_id": 13,
+    "player_id": 34,
     "name": "Ederson",
     "position": "GK",
     "skill_level": 94,
     "team_id": 4
   },
   {
-    "player_id": 14,
+    "player_id": 35,
     "name": "Ruben Dias",
     "position": "DEF",
     "skill_level": 91,
     "team_id": 4
   },
   {
-    "player_id": 15,
+    "player_id": 36,
+    "name": "Kyle Walker",
+    "position": "DEF",
+    "skill_level": 88,
+    "team_id": 4
+  },
+  {
+    "player_id": 37,
+    "name": "John Stones",
+    "position": "DEF",
+    "skill_level": 87,
+    "team_id": 4
+  },
+  {
+    "player_id": 38,
     "name": "Kevin De Bruyne",
     "position": "MID",
     "skill_level": 96,
     "team_id": 4
   },
   {
-    "player_id": 16,
-    "name": "Erling Haaland",
-    "position": "FOR",
-    "skill_level": 98,
+    "player_id": 39,
+    "name": "Rodri",
+    "position": "MID",
+    "skill_level": 94,
     "team_id": 4
   },
   {
-    "player_id": 17,
+    "player_id": 40,
+    "name": "Bernardo Silva",
+    "position": "MID",
+    "skill_level": 91,
+    "team_id": 4
+  },
+  {
+    "player_id": 41,
+    "name": "Erling Haaland",
+    "position": "FWD",
+    "skill_level": 97,
+    "team_id": 4
+  },
+  {
+    "player_id": 42,
+    "name": "Jack Grealish",
+    "position": "FWD",
+    "skill_level": 89,
+    "team_id": 4
+  },
+  {
+    "player_id": 43,
+    "name": "Phil Foden",
+    "position": "FWD",
+    "skill_level": 91,
+    "team_id": 4
+  },
+  {
+    "player_id": 44,
+    "name": "Manuel Akanji",
+    "position": "DEF",
+    "skill_level": 85,
+    "team_id": 4
+  },
+  {
+    "player_id": 45,
     "name": "Manuel Neuer",
     "position": "GK",
     "skill_level": 93,
     "team_id": 5
   },
   {
-    "player_id": 18,
+    "player_id": 46,
     "name": "Joshua Kimmich",
     "position": "DEF",
+    "skill_level": 91,
+    "team_id": 5
+  },
+  {
+    "player_id": 47,
+    "name": "Matthijs de Ligt",
+    "position": "DEF",
+    "skill_level": 87,
+    "team_id": 5
+  },
+  {
+    "player_id": 48,
+    "name": "Alphonso Davies",
+    "position": "DEF",
+    "skill_level": 86,
+    "team_id": 5
+  },
+  {
+    "player_id": 49,
+    "name": "Leon Goretzka",
+    "position": "MID",
     "skill_level": 88,
     "team_id": 5
   },
   {
-    "player_id": 19,
-    "name": "Thomas Müller",
+    "player_id": 50,
+    "name": "Jamal Musiala",
     "position": "MID",
-    "skill_level": 92,
+    "skill_level": 90,
     "team_id": 5
   },
   {
-    "player_id": 20,
+    "player_id": 51,
+    "name": "Kingsley Coman",
+    "position": "MID",
+    "skill_level": 87,
+    "team_id": 5
+  },
+  {
+    "player_id": 52,
+    "name": "Thomas Müller",
+    "position": "FWD",
+    "skill_level": 87,
+    "team_id": 5
+  },
+  {
+    "player_id": 53,
+    "name": "Serge Gnabry",
+    "position": "FWD",
+    "skill_level": 86,
+    "team_id": 5
+  },
+  {
+    "player_id": 54,
+    "name": "Leroy Sané",
+    "position": "FWD",
+    "skill_level": 89,
+    "team_id": 5
+  },
+  {
+    "player_id": 55,
     "name": "Harry Kane",
-    "position": "FOR",
+    "position": "FWD",
     "skill_level": 95,
     "team_id": 5
   }
