@@ -24,7 +24,8 @@ def main():
                 player_data["player_id"],
                 player_data["name"],
                 player_data["position"],
-                player_data["skill_level"]
+                player_data["skill_level"],
+                player_data["team_id"],
             )
         )
 
@@ -46,6 +47,10 @@ def main():
                 team.players.add(player)
 
     print(f'Teams:\n {[str(team) for team in teams]}')
+
+    # update teams' power
+    for team in teams:
+        team.update_team_power()
 
     # play some match
     match = Match(teams[1], teams[2])
