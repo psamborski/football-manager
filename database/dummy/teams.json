@@ -1,0 +1,23 @@
+[
+  {
+    "team_id": 1,
+    "name": "Barcelona"
+  },
+  {
+    "team_id": 2,
+    "name": "Real"
+  },
+  {
+    "team_id": 3,
+    "name": "Arsenal"
+  },
+  {
+    "team_id": 4,
+    "name": "Man City"
+  },
+  {
+    "team_id": 5,
+    "name": "Bayern"
+  }
+]
+

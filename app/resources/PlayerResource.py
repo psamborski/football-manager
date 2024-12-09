@@ -9,7 +9,7 @@ class PlayerResource:
 
     def load_players(self):
         # load data
-        with open('./datasets/players.json', 'r') as file:
+        with open('./dummy/players.json', 'r') as file:
             players_data = json.load(file)
 
         # players objects
@@ -19,7 +19,7 @@ class PlayerResource:
                     player_data["player_id"],
                     player_data["name"],
                     player_data["position"],
-                    player_data["skill_level"],
+                    player_data["skill_rating"],
                     player_data["team_id"],
                 )
             )

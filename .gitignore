@@ -1,5 +1,8 @@
 # Custom files
+.DS_Store
 app.log
+_helpers
+database/saves/*
 
 ### BOILERPLATE
 

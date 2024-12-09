@@ -6,7 +6,7 @@ class Team:
         self.team_power = 0
 
     def update_team_power(self):
-        self.team_power = sum([player.skill_level for player in self.players])
+        self.team_power = sum([player.skill_rating for player in self.players])
 
     def __str__(self):
         return f"Team: {self.name}"

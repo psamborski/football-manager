@@ -70,7 +70,7 @@ class Match:
     @staticmethod
     def _pick_scorer(players):
         # Generate scorer basing on position and rating
-        # The system: player who will get the most points is the scorer. Points are given for rating, position and random modifier
+        # The system: player who gets the most points is the scorer. Points are given for rating, position and random modifier
         position_points = {
             'GK': 5,
             'DEF': 50,
@@ -80,7 +80,7 @@ class Match:
 
         score_chances = []
         for player in players:
-            score_points = player.skill_level
+            score_points = player.skill_rating
             score_points += position_points[player.position]
             score_points += randint(10, 100)
             score_chances.append([player, score_points])
