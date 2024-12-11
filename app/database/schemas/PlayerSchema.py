@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, String, Float, Date, ForeignKey, CheckConstraint
 from sqlalchemy.orm import relationship
-from database import Base
+from app.database import Base
 
 
 class PlayerSchema(Base):
@@ -16,28 +16,11 @@ class PlayerSchema(Base):
 
     # relations with clubs and countries tables
     club_id = Column(Integer, ForeignKey('clubs.club_id'), nullable=True)
-    country_id = Column(Integer, ForeignKey('countries.country_id'), nullable=True)
+    country_id = Column(Integer, ForeignKey('countries.country_id'), nullable=False)
 
     # orm backrefs to other tables
     club = relationship('ClubSchema', back_populates='players')
     country = relationship('CountrySchema', back_populates='players')
-
-    @classmethod
-    def get_player_by_id(self, player_id: int = None):
-        """
-        Get player by ID.
-        :return: Player data.
-        """
-        try:
-            player = self.query. \
-                filter_by(player_id=self.player_id). \
-                first()
-            print(player)
-
-            return player
-
-        except Exception as e:
-            pass
 
 
     def __repr__(self):
