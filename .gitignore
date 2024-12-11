@@ -2,7 +2,7 @@
 .DS_Store
 app.log
 _helpers
-database/saves/*
+app/database/saves/*
 
 ### BOILERPLATE
 
