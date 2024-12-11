@@ -1,0 +1,1 @@
+# 2. Warstwa Mapowania Danych (Data Mapping Layer)

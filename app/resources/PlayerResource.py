@@ -1,33 +1,30 @@
-import json
-
-from app.models.PlayerModel import Player
-
+from app.database.schemas.PlayerSchema import PlayerSchema
+from sqlalchemy.orm import Session
 
 class PlayerResource:
-    def __init__(self):
-        self.players = []
+    """Handles operations related to Player entities in the database."""
+    def __init__(self, db_session: Session):
+        self.db_session = db_session
 
-    def load_players(self):
-        # load data
-        with open('./dummy/players.json', 'r') as file:
-            players_data = json.load(file)
+    def get_all_players(self):
+        """Retrieve all players from the database."""
+        return self.db_session.query(PlayerSchema).all()
 
-        # players objects
-        for player_data in players_data:
-            self.players.append(
-                Player(
-                    player_data["player_id"],
-                    player_data["name"],
-                    player_data["position"],
-                    player_data["skill_rating"],
-                    player_data["team_id"],
-                )
-            )
+    def get_player_by_id(self, player_id: int):
+        """Retrieve a single player by their ID."""
+        return self.db_session.query(PlayerSchema).filter_by(player_id=player_id).first()
 
-        # print(f'Players:\n {[str(player) for player in players]}')
+    def create_player(self, player_data: dict):
+        """Create a new player in the database."""
+        new_player = PlayerSchema(**player_data)
+        self.db_session.add(new_player)
+        self.db_session.commit()
+        return new_player
 
-
-    def get_players(self):
-        if not self.players:
-            self.load_players()
-        return self.players
+    def delete_player(self, player_id: int):
+        """Delete a player from the database."""
+        player = self.get_player_by_id(player_id)
+        if player:
+            self.db_session.delete(player)
+            self.db_session.commit()
+        return player
