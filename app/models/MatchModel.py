@@ -7,13 +7,13 @@ class Match:
     def __init__(self, hosts_team: Team, guests_team: Team):
         self.host_team = hosts_team
         self.guest_team = guests_team
-        self.score = {hosts_team.team_id: 0, guests_team.team_id: 0}
+        self.score = {hosts_team.club_id: 0, guests_team.club_id: 0}
         self.match_time = 90
         self.stats = {
-            self.host_team.team_id: {
+            self.host_team.club_id: {
                 "scorers": []
             },
-            self.guest_team.team_id: {
+            self.guest_team.club_id: {
                 "scorers": []
             }
         }
@@ -33,11 +33,11 @@ class Match:
 
         if self._attempt_goal(self.host_team, current_time, segment_duration):
             # print(f'GOAL for {self.host_team.name} ({hosts_goal_time} min)')
-            self.score[self.host_team.team_id] += 1
+            self.score[self.host_team.club_id] += 1
 
         if self._attempt_goal(self.guest_team, current_time, segment_duration):
             # print(f'GOAL for {self.guest_team.name} ({guests_goal_time} min)')
-            self.score[self.guest_team.team_id] += 1
+            self.score[self.guest_team.club_id] += 1
 
     def _attempt_goal(self, team, current_time, segment_duration):
         # Check if given team scored during given match segment
@@ -55,7 +55,7 @@ class Match:
 
         if randomizer < probability:
             # generate scorer and goal time
-            self.stats[team.team_id]["scorers"].append(
+            self.stats[team.club_id]["scorers"].append(
                 [self._pick_scorer(team.players), self._pick_goal_time(current_time, segment_duration)]
             )
             return True
@@ -88,17 +88,17 @@ class Match:
         return max(score_chances, key=lambda x: x[1])[0]
 
     def __str__(self):
-        return f'{self.host_team.name} {self.score[self.host_team.team_id]} - {self.score[self.guest_team.team_id]} {self.guest_team.name}'
+        return f'{self.host_team.name} {self.score[self.host_team.club_id]} - {self.score[self.guest_team.club_id]} {self.guest_team.name}'
 
     def __repr__(self):
         scoreboard = ('MATCH:\n'
-                      f'{self.host_team.name} {self.score[self.host_team.team_id]}'
+                      f'{self.host_team.name} {self.score[self.host_team.club_id]}'
                       ' - '
-                      f'{self.score[self.guest_team.team_id]} {self.guest_team.name}'
+                      f'{self.score[self.guest_team.club_id]} {self.guest_team.name}'
                       )
 
-        for team_id, team_stats in self.stats.items():
-            scoreboard += f'\n{self.host_team.name if team_id == self.host_team.team_id else self.guest_team.name}:'
+        for club_id, team_stats in self.stats.items():
+            scoreboard += f'\n{self.host_team.name if club_id == self.host_team.club_id else self.guest_team.name}:'
             for scorer in team_stats["scorers"]:
                 scoreboard += f'  {scorer[0].name} \'{scorer[1]}'
         return scoreboard
