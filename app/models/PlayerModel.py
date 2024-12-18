@@ -98,7 +98,7 @@ class PlayerModel(BaseModel):
 
             player_data = reformat_player_data_from_db(player)
 
-            # if self.model_validate(player_data): # TODO uncomment whe you fix players birthdays
+            # if self.model_validate(player_data): # TODO uncomment when you fix players birthdays
             if True:
                 self.__dict__.update(player_data)
                 return self

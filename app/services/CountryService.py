@@ -3,7 +3,7 @@ from app.database import get_db_session, CountrySchema
 from app.models.CountryModel import CountryModel
 from app.resources.CountryResource import CountryResource
 
-from app.utils import reformat_country_data_from_db
+from app.models.utils import reformat_country_data_from_db
 
 
 class CountryService:

@@ -1,7 +1,7 @@
 from app.database import get_db_session, PlayerSchema
 from app.models.PlayerModel import PlayerModel
 from app.resources.PlayerResource import PlayerResource
-from app.utils import reformat_player_data_from_db
+from app.models.utils import reformat_player_data_from_db
 
 
 class PlayerService:
