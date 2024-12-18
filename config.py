@@ -2,6 +2,10 @@
 import logging
 import os
 
+# app basic data
+APP_NAME = "FM CLI"
+APP_VERSION = "0.2"
+
 # Get application stage from environment
 app_stage = os.getenv('STAGE')
 
