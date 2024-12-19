@@ -23,6 +23,6 @@ class BaseMenuCli:
         Runs the menu in a loop.
         """
         while True:
-            choice = self.base_cli.display_menu(stdscr, self.menu_items, self.prompt)
+            choice = self.base_cli.display_menu(self.menu_items, self.prompt)
             if not self.handle_choice(choice, stdscr):
                 break

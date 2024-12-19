@@ -9,11 +9,12 @@ class CountriesMenuCli(BaseMenuCli):
 
         super().__init__(
             base_cli,
-            menu_items=[country.name for country in self.countries_data] + ["Back"],
-            prompt="Choose country to view its TOP 10 players"
+            menu_items=[country.name for country in self.countries_data],
+            prompt="Choose country to view its TOP 10 players."
         )
 
     def handle_choice(self, choice, stdscr):
+        pass
         # if choice == 0:  # Players
         #     TopPlayersMenu(self.base_cli).run(stdscr)
         # elif choice == 1:  # Clubs
@@ -23,8 +24,3 @@ class CountriesMenuCli(BaseMenuCli):
         # elif choice == 3:  # Back
         #     return False
         # return True
-
-        if choice == len(self.countries_data): # Back
-            return False
-
-
