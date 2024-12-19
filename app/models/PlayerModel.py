@@ -9,6 +9,9 @@ from app.models.utils import reformat_player_data_from_db
 
 from app.resources.PlayerResource import PlayerResource
 
+from config import LOGGER
+
+
 class PlayerModel(BaseModel):
     """
     Represents a player entity in the app.models module, managing essential 
@@ -121,8 +124,7 @@ class PlayerModel(BaseModel):
 
         player_data = self.model_dump(exclude={"player_id"})
         print(warnings.warn("Player ID will be generated automatically in database."))
-        logger = logging.getLogger(__name__)
-        logger.warning("Player ID will be generated automatically in database.")
+        LOGGER.warning("Player ID will be generated automatically in database.")
 
         with get_db_session() as db_session:
             player_resource = PlayerResource(db_session)

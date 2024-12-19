@@ -23,6 +23,9 @@ LOGGING_CONFIG = {
     'datefmt': '%H:%M:%S',
     'level': logging.DEBUG,
 }
+db_handler = logging.FileHandler('db.log')
+db_handler.setLevel(logging.DEBUG)
+logging.getLogger('sqlalchemy').addHandler(db_handler)
 
-def setup_logging():
-    logging.basicConfig(**LOGGING_CONFIG)
+logging.basicConfig(**LOGGING_CONFIG)
+LOGGER = logging.getLogger(__name__)

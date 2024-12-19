@@ -8,6 +8,8 @@ from app.models.utils import reformat_club_data_from_db
 
 from app.resources.ClubResource import ClubResource
 
+from config import LOGGER
+
 
 class ClubModel(BaseModel):
     """
@@ -110,9 +112,8 @@ class ClubModel(BaseModel):
 
         club_data = self.model_dump(exclude={"club_id", "players_ids"})
 
-        logger = logging.getLogger(__name__)
-        logger.warning("Club ID will be generated automatically in the database.")
-        logger.warning("Creating a club won't update players' club affiliations. Please update them manually.")
+        LOGGER.warning("Club ID will be generated automatically in the database.")
+        LOGGER.warning("Creating a club won't update players' club affiliations. Please update them manually.")
         print(warnings.warn("Club ID will be generated automatically in the database."))
         print(warnings.warn("Creating a club won't update players' club affiliations. Please update them manually."))
 

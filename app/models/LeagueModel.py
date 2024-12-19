@@ -1,12 +1,13 @@
-import logging
 import warnings
 from typing import Optional
+
 from pydantic import BaseModel, Field, ValidationError, model_validator
 
 from app.database import get_db_session
 from app.models.utils import reformat_league_data_from_db
-
 from app.resources.LeagueResource import LeagueResource
+
+from config import LOGGER
 
 
 class LeagueModel(BaseModel):
@@ -109,9 +110,8 @@ class LeagueModel(BaseModel):
 
         league_data = self.model_dump(exclude={"league_id", "clubs_ids"})
 
-        logger = logging.getLogger(__name__)
-        logger.warning("League ID will be generated automatically in the database.")
-        logger.warning("Creating a league won't update clubs' league affiliations. Please update them manually.")
+        LOGGER.warning("League ID will be generated automatically in the database.")
+        LOGGER.warning("Creating a league won't update clubs' league affiliations. Please update them manually.")
         print(warnings.warn("League ID will be generated automatically in the database."))
         print(warnings.warn("Creating a league won't update clubs' league affiliations. Please update them manually."))
 

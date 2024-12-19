@@ -25,7 +25,7 @@ class CountryService:
         with get_db_session() as db_session:
             country_resource = CountryResource(db_session)
 
-            raw_data = country_resource.get_all_countries(order_by=CountrySchema.name.desc())
+            raw_data = country_resource.get_all_countries(order_by=CountrySchema.name.asc())
 
             return [
                 CountryModel(

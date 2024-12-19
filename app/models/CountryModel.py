@@ -1,12 +1,13 @@
-import logging
 import warnings
 from typing import Optional
+
 from pydantic import BaseModel, Field, ValidationError, model_validator
 
 from app.database import get_db_session
 from app.models.utils import reformat_country_data_from_db
-
 from app.resources.CountryResource import CountryResource
+
+from config import LOGGER
 
 
 class CountryModel(BaseModel):
@@ -108,9 +109,8 @@ class CountryModel(BaseModel):
 
         country_data = self.model_dump(exclude={"country_id", "players_ids"})
 
-        logger = logging.getLogger(__name__)
-        logger.warning("Country ID will be generated automatically in the database.")
-        logger.warning("Creating a country won't update players' country affiliations. Please update them manually.")
+        LOGGER.warning("Country ID will be generated automatically in the database.")
+        LOGGER.warning("Creating a country won't update players' country affiliations. Please update them manually.")
         print(warnings.warn("Country ID will be generated automatically in the database."))
         print(warnings.warn("Creating a country won't update players' country affiliations. Please update them manually."))
 
