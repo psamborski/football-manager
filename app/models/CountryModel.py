@@ -63,6 +63,7 @@ class CountryModel(BaseModel):
                 "1. Pass 'country_id' only.\n"
                 "2. Pass all other fields except 'country_id'.\n"
                 "3. All fields at once.\n"
+                f"Given fields: {entries}\n"
                 "Possible fields: country_id (int), name (str) players_ids (list[int]) [always optional]."
             )
         return values

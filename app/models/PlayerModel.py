@@ -55,6 +55,7 @@ class PlayerModel(BaseModel):
         """
         entries = {**values.model_dump()}
         del entries["club_id"]  # player can be not assigned to any club, so exclude it from validation
+        del entries["birthday"]  # TODO remove when players' birthdays fixed!
 
         # Check if there's only player_id
         has_only_player_id = entries.get("player_id", None) is not None and all(
@@ -77,6 +78,7 @@ class PlayerModel(BaseModel):
                 "1. Pass 'player_id' only.\n"
                 "2. Pass all other fields except 'player_id'.\n"
                 "3. All fields at once.\n"
+                f"Given fields: {entries}\n"
                 "Possible fields: player_id (int), name (str), position (str), skill_rating (int), height (int), weight (float), birthday (date), club_id (int) [always optional], country_id (int)."
             )
         return values

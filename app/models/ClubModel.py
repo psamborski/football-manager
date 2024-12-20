@@ -66,6 +66,7 @@ class ClubModel(BaseModel):
                 "1. Pass 'club_id' only.\n"
                 "2. Pass all other fields except 'club_id'.\n"
                 "3. All fields at once.\n"
+                f"Given fields: {entries}\n"
                 "Possible fields: club_id (int), name (str), league_id (int), players_ids (list[int]) [always optional]."
             )
         return values
