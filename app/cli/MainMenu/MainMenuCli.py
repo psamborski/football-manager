@@ -1,29 +1,30 @@
-from app.cli.BaseMenuCli import BaseMenuCli
+from app.cli.GenericMenuCli import GenericMenuCli
 from app.cli.ExploreDatabase.ExploreDatabaseMenuCli import ExploreDatabaseMenuCli
 from config import APP_NAME, APP_VERSION
 
 
-class MainMenuCli(BaseMenuCli):
-    def __init__(self, base_cli):
+class MainMenuCli(GenericMenuCli):
+    def __init__(self):
         super().__init__(
-            base_cli,
             menu_items=[
                 "Explore database",
-                "Creators",
+                "About",
                 "Exit",
             ],
-            prompt=f"Welcome to {APP_NAME}!"
+            prompt=f"Welcome to {APP_NAME}!",
+            breadcrumbs="Main menu"
         )
 
-    def handle_choice(self, choice, stdscr):
+    def handle_choice(self, choice):
         if choice == 0:  # Explore database
-            ExploreDatabaseMenuCli(self.base_cli).run(stdscr)
-        elif choice == 1:  # Creators
-            self.base_cli.display_text(
-                f"{APP_NAME} v.{APP_VERSION}\nCreators: Patryk Samborski",
-                prompt="Press any key to return to the menu...",
+            ExploreDatabaseMenuCli().run()
+        elif choice == 1:  # About
+            self.display_text(
+                f"Full app name: {APP_NAME} v.{APP_VERSION}\nCreators: Patryk Samborski",
+                prompt="About FM CLI",
+                continue_message="Press any key to return to main menu..."
             )
         elif choice == 2:  # Exit
-            self.base_cli.display_text(f"Thank you for playing {APP_NAME}!", "")
+            self.display_text(f"Thank you for playing {APP_NAME}!", "")
             return False  # Exit application
         return True

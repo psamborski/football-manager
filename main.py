@@ -1,9 +1,13 @@
 import curses
 from app.cli.BaseCli import BaseCli
+from app.cli.MainMenu.MainMenuCli import MainMenuCli
+
 
 def main(stdscr):
-    app = BaseCli(stdscr)
-    app.run_welcome_screen()
+    BaseCli.set_stdscr(stdscr)
+
+    app = MainMenuCli()
+    app.run()
 
 if __name__ == "__main__":
     curses.wrapper(main)
