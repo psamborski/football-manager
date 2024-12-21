@@ -12,6 +12,7 @@ class BaseCli:
         - Configures terminal properties like screen size, colors, and cursor visibility.
         - Includes navigation handling and UI elements like breadcrumbs and prompts.
     """
+
     # Represents the main curses screen buffer for rendering terminal UI components.
     stdscr = None
 
@@ -33,7 +34,7 @@ class BaseCli:
 
         self.current_menu_option = 0
 
-    def display_menu(self, menu_items, prompt, breadcrumbs, items_per_page=None):
+    def display_menu(self, menu_items, prompt="", breadcrumbs="", items_per_page=None):
         """
         Displays a menu and processes user inputs for navigation.
 
@@ -71,7 +72,10 @@ class BaseCli:
             # pagination vars
             start_idx = current_page * items_per_page
             end_idx = min(start_idx + items_per_page, total_items)
+
+            # define offset above the menu
             offset = 2 if breadcrumbs else 1
+            offset += 1 if prompt else 0
 
             # render proper list
             self._render_paginated_menu_items(menu_items, start_idx, end_idx, self.current_menu_option, offset)
@@ -80,7 +84,7 @@ class BaseCli:
             if total_pages > 1:
                 self.stdscr.addstr(
                     self.workspace_height - 2, 2,
-                    f"{current_page + 1} of{total_pages} (press \"q\" to exit...)",
+                    f"{current_page + 1} of {total_pages} (press \"q\" to exit...)",
                     curses.A_DIM
                 )
 
@@ -101,10 +105,10 @@ class BaseCli:
                 self.current_menu_option = current_page * items_per_page + items_per_page - 1
             elif key == curses.KEY_ENTER or key in [10, 13]:  # 10 and 13 - enter in various envs (Mac, Linux, Windows)
                 return self.current_menu_option
-            elif key == ord('q'):  # q to go back
+            elif key == ord('q'):  # q to go back FIXME bad behavior
                 return None
 
-    def display_text(self, text, prompt=None, breadcrumbs=None, continue_message="Press any key to continue..."):
+    def display_text(self, text, prompt="", breadcrumbs="", continue_message="Press any key to continue..."):
         """
         Displays multiline text on the screen with optional prompt, breadcrumbs, and scrolling functionality.
 
@@ -123,7 +127,7 @@ class BaseCli:
         self.stdscr.clear()  # Clear the screen for text display.
 
         text_lines = text.splitlines()  # Split the text into separate lines.
-        available_height = self.workspace_height - 5  # Limit height excluding footer space.
+        available_height = self.workspace_height - 4  # Limit height excluding footer space.
         if breadcrumbs:
             available_height -= 1  # Adjust height for breadcrumbs space.
         if prompt:
@@ -144,7 +148,7 @@ class BaseCli:
 
             end_line = min(current_line + available_height, total_lines)
 
-            # render proper text
+            # render actual text
             self._render_scrollable_text(text_lines, current_line, end_line, offset)
 
             # display continue message
@@ -155,11 +159,13 @@ class BaseCli:
 
             # arrows navigation
             key = self.stdscr.getch()
-            if key == curses.KEY_UP and current_line > 0:
-                current_line -= 1
-            elif key == curses.KEY_DOWN and current_line + available_height < total_lines:
-                current_line += 1
-            else:  # catch any other key to exit
+            if key == curses.KEY_UP:
+                if current_line > 0:
+                    current_line -= 1
+            elif key == curses.KEY_DOWN:
+                if current_line + available_height < total_lines:
+                    current_line += 1
+            else:  # catch any other key to exit FIXME bad behavior
                 break
 
     def _render_header(self, prompt, breadcrumbs):
