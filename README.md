@@ -24,10 +24,11 @@ App structure:
 ### v. 0.2 [in progress]
 - reorganised and updated DB:
     - added 9k+ real players
-    - added TOP 5 leagues + polish Ekstraklasa
-    - added real clubs associated with mentioned leagues
+    - added 28 leagues
+    - added 386 real clubs associated with mentioned leagues
     - added proper nationalities
-- updated files structure for scalable app; it covers 7 basic app layers now
+- calculating team power [in progress]
+- totally remodeled files structure for scalable app; it covers 7 basic app layers now
 
 ### v. 0.1
 - project setup

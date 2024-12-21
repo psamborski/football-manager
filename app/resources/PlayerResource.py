@@ -37,7 +37,7 @@ class PlayerResource:
         """Retrieve a single player by their ID."""
         return self.db_session.query(PlayerSchema).filter_by(player_id=player_id).first()
 
-    def get_players_by_country(self, country_id: int, limit=None, order_by=None):
+    def get_players_by_country_id(self, country_id: int, limit=None, order_by=None):
         """
         Retrieve players belonging to a specific country.
 
@@ -55,7 +55,7 @@ class PlayerResource:
 
         return query.all()
 
-    def get_players_by_club(self, club_id: int, limit=None, order_by=None):
+    def get_players_by_club_id(self, club_id: int, limit=None, order_by=None):
         """
         Retrieve players belonging to a specific club.
 

@@ -1,7 +1,7 @@
 from app.cli.About.AboutCli import AboutCli
 from app.cli.GenericMenuCli import GenericMenuCli
 from app.cli.ExploreDatabase.ExploreDatabaseMenuCli import ExploreDatabaseMenuCli
-from config import APP_NAME, APP_VERSION
+from config import APP_NAME
 
 
 class MainMenuCli(GenericMenuCli):

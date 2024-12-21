@@ -22,3 +22,5 @@ class CountrySingleView(GenericMenuCli):
         if not isinstance(choice, int) or choice < 0 or choice >= len(self.top_players_from_country):
             return False    # NoneType = user pressed "q"
         PlayerSingleView(self.top_players_from_country[choice]).run()
+
+        return True

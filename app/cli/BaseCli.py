@@ -55,6 +55,7 @@ class BaseCli:
         curses.curs_set(0)  # To disable the cursor
         self.stdscr.clear()  # Preparing screen for new display
         self._reset_current_option()  # reset chosen item to first option whenever screen changes
+        # TODO FIXME going back to previous screen should not reset chosen option
 
         if items_per_page is None:
             items_per_page = self.workspace_height - 5  # Adjust max items per page based on height.
@@ -83,7 +84,7 @@ class BaseCli:
             # add UX message if necessary
             if total_pages > 1:
                 self.stdscr.addstr(
-                    self.workspace_height - 2, 2,
+                    self.workspace_height - 2, 4,
                     f"{current_page + 1} of {total_pages} (press \"q\" to exit...)",
                     curses.A_DIM
                 )
@@ -98,20 +99,25 @@ class BaseCli:
                 if self.current_menu_option % items_per_page == 0 and current_page > 0:
                     current_page -= 1
                 self.current_menu_option -= 1  # Move to the previous menu option.
+
             elif key == curses.KEY_DOWN and self.current_menu_option < total_items - 1:
                 self.current_menu_option += 1  # Move to the next menu option.
                 # show next page when user reaches the bottom of the current menu page
                 if self.current_menu_option % items_per_page == 0 and current_page < total_pages - 1:
                     current_page += 1
+
             elif key == curses.KEY_RIGHT and current_page < total_pages - 1:
                 current_page += 1  # Navigate to the next page.
                 self.current_menu_option = current_page * items_per_page  # Update current option.
+
             elif key == curses.KEY_LEFT and current_page > 0:
                 current_page -= 1
                 self.current_menu_option = current_page * items_per_page + items_per_page - 1
+
             elif key == curses.KEY_ENTER or key in [10, 13]:  # 10 and 13 - enter in various envs (Mac, Linux, Windows)
                 return self.current_menu_option
-            elif key == ord('q'):  # q to go back FIXME bad behavior
+
+            elif key == ord('q'):  # q to go back
                 return None
 
     def display_text(self, text, prompt="", breadcrumbs="", continue_message="Press any key to continue..."):
@@ -171,7 +177,7 @@ class BaseCli:
             elif key == curses.KEY_DOWN:
                 if current_line + available_height < total_lines:
                     current_line += 1
-            else:  # catch any other key to exit FIXME bad behavior
+            else:  # catch any other key to exit
                 break
 
     def _render_header(self, prompt, breadcrumbs):

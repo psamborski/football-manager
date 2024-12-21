@@ -15,7 +15,7 @@ class ExploreSingleCountryCli(CountrySingleView):
             breadcrumbs=f"Main menu > Explore database > Countries > {self.country.name}"
         )
 
-    # IMPORTANT no need to overwrite generic function and, accordingly, player view
+    # IMPORTANT no need to overwrite generic (parent) function and, accordingly, player view
     # def handle_choice(self, choice):
     #     if not isinstance(choice, int) or choice < 0 or choice >= len(self.top_players_from_country):
     #         return False    # NoneType = user pressed "q"

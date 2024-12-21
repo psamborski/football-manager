@@ -21,3 +21,4 @@ class CountryAllView(GenericMenuCli):
         if not isinstance(choice, int) or choice < 0 or choice >= len(self.countries_data):
             return False    # NoneType = user pressed "q"
         CountrySingleView(self.countries_data[choice]).run()
+        return True
