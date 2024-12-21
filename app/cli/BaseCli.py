@@ -94,9 +94,15 @@ class BaseCli:
             # arrow navigation
             key = self.stdscr.getch()
             if key == curses.KEY_UP and self.current_menu_option > 0:
+                # show prev page when user reaches the top of the current menu page
+                if self.current_menu_option % items_per_page == 0 and current_page > 0:
+                    current_page -= 1
                 self.current_menu_option -= 1  # Move to the previous menu option.
             elif key == curses.KEY_DOWN and self.current_menu_option < total_items - 1:
                 self.current_menu_option += 1  # Move to the next menu option.
+                # show next page when user reaches the bottom of the current menu page
+                if self.current_menu_option % items_per_page == 0 and current_page < total_pages - 1:
+                    current_page += 1
             elif key == curses.KEY_RIGHT and current_page < total_pages - 1:
                 current_page += 1  # Navigate to the next page.
                 self.current_menu_option = current_page * items_per_page  # Update current option.
