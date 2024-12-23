@@ -28,6 +28,10 @@ App structure:
     - added 386 real clubs associated with mentioned leagues
     - added proper nationalities
 - adapted match simulating model to the new DB [in progress]
+  - todo:
+    - can't play matches between two same team
+    - even if so - scorers should be separated
+    - improve scoring times - it's not always chronological cause of rand
 - calculating team power
 - totally remodeled files structure for scalable app; it covers 7 basic app layers now
 

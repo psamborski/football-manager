@@ -69,7 +69,8 @@ class ClubService:
                 "graphical_club_rating": self._get_graphical_club_rating_repr(0)
             }
 
-        AVG_5_STAR_TRESHOLD = 99
+        AVG_5_STAR_TRESHOLD = 90  # team with 90 power has 5.0/5 rating
+        AVG_1_STAR_TRESHOLD = 40  # team with 40 power still has 1.0/5 rating
         SCALE = 5  # max stars number
 
         # Sort players by rating (highest to lowest)
@@ -103,12 +104,12 @@ class ClubService:
 
         # Calculate overall strength
         overall_strength = (
-                (first_eleven_strength * 0.75) +
-                (substitutes_strength * 0.25) +
+                (first_eleven_strength * 0.7) +
+                (substitutes_strength * 0.3) +
                 (age_modifier * 100)
         )
 
-        strength = min(overall_strength / AVG_5_STAR_TRESHOLD * SCALE, 5)
+        strength = min((overall_strength - AVG_1_STAR_TRESHOLD) / (AVG_5_STAR_TRESHOLD - AVG_1_STAR_TRESHOLD) * SCALE, 5)
         strength_rounded_to_halves = round(strength * 2) / 2
 
         return {

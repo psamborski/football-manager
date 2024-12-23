@@ -1,7 +1,5 @@
 from app.cli.GenericTextCli import GenericTextCli
-from app.cli._GenericViews.PlayerSingleView import PlayerSingleView
 
-from app.services.AllPlayersService import AllPlayersService
 from app.services.MatchService import MatchService
 
 
