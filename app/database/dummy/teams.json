@@ -1,22 +1,22 @@
 [
   {
-    "team_id": 1,
+    "club_id": 1,
     "name": "Barcelona"
   },
   {
-    "team_id": 2,
+    "club_id": 2,
     "name": "Real"
   },
   {
-    "team_id": 3,
+    "club_id": 3,
     "name": "Arsenal"
   },
   {
-    "team_id": 4,
-    "name": "Man U"
+    "club_id": 4,
+    "name": "Man City"
   },
   {
-    "team_id": 5,
+    "club_id": 5,
     "name": "Bayern"
   }
 ]
