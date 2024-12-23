@@ -21,17 +21,17 @@ App structure:
 
 ## Changelog
 
-### v. 0.2 [in progress]
+### v. 0.2
 - reorganised and updated DB:
     - added 9k+ real players
     - added 28 leagues
     - added 386 real clubs associated with mentioned leagues
     - added proper nationalities
-- adapted match simulating model to the new DB [in progress]
-  - todo:
-    - can't play matches between two same team
-    - even if so - scorers should be separated
-    - improve scoring times - it's not always chronological cause of rand
+- adapted match simulating model to the new DB
+  - to fix:
+    - shouldn't be able play matches between two same team
+    - even if so - scorers should be separated to two teams
+    - improve scoring times - it's not always chronological
 - calculating team power
 - totally remodeled files structure for scalable app; it covers 7 basic app layers now
 
