@@ -108,11 +108,11 @@ class BaseCli:
 
             elif key == curses.KEY_RIGHT and current_page < total_pages - 1:
                 current_page += 1  # Navigate to the next page.
-                self.current_menu_option = current_page * items_per_page  # Update current option.
+                self.current_menu_option = min(self.current_menu_option + items_per_page, total_items - 1)
 
             elif key == curses.KEY_LEFT and current_page > 0:
                 current_page -= 1
-                self.current_menu_option = current_page * items_per_page + items_per_page - 1
+                self.current_menu_option = max(self.current_menu_option - items_per_page, 0)
 
             elif key == curses.KEY_ENTER or key in [10, 13]:  # 10 and 13 - enter in various envs (Mac, Linux, Windows)
                 return self.current_menu_option
