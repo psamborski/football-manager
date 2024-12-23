@@ -1,13 +1,13 @@
 from app.cli.GenericMenuCli import GenericMenuCli
 from app.cli._GenericViews.PlayerSingleView import PlayerSingleView
 
-from app.services.PlayerService import PlayerService
+from app.services.AllPlayersService import AllPlayersService
 
 
 class PlayerAllView(GenericMenuCli):
     def __init__(self, players_limit=100, prompt="", breadcrumbs=""):
         self.players_limit = players_limit
-        self.players = PlayerService.get_all_players(limit=100)
+        self.players = AllPlayersService.get_all_players(limit=100)
         self.prompt = prompt
         self.breadcrumbs = breadcrumbs
 

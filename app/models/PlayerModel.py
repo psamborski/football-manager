@@ -1,14 +1,12 @@
-import logging
 import warnings
-from datetime import date
+from datetime import date, datetime
 from typing import Optional
+
 from pydantic import BaseModel, Field, ValidationError, model_validator
 
 from app.database import get_db_session
 from app.models.utils import reformat_player_data_from_db
-
 from app.resources.PlayerResource import PlayerResource
-
 from config import LOGGER
 
 
@@ -35,6 +33,7 @@ class PlayerModel(BaseModel):
     height: Optional[int] = Field(default=None, ge=1, le=299, description="Height in centimeters")
     weight: Optional[float] = Field(default=None, ge=1, le=299, description="Weight in kilograms")
     birthday: Optional[date] = Field(default=None, description="Date of birth of the player")
+    age: Optional[int] = Field(default=None, description="Age of the player as of 1.01.2025", exclude=True)
     club_id: Optional[int] = Field(default=None, description="ID of club associated with the player")
     country_id: Optional[int] = Field(default=None, description="Id of country associated with the player")
 
@@ -83,6 +82,12 @@ class PlayerModel(BaseModel):
             )
         return values
 
+    def model_post_init(self, __context):
+        """
+        Post-initialization hook to calculate the age after model initialization.
+        """
+        self.age = self._calculate_age()
+
     def fetch_data_by_id(self) -> "PlayerModel":
         """
         Fetches a player's details using the `player_id` key.
@@ -106,6 +111,7 @@ class PlayerModel(BaseModel):
             # if self.model_validate(player_data): # TODO uncomment when you fix players birthdays
             if True:
                 self.__dict__.update(player_data)
+                self.age = self._calculate_age()
                 return self
             else:
                 raise ValidationError("Player data is invalid.")
@@ -147,6 +153,20 @@ class PlayerModel(BaseModel):
 
     # TODO def update_player(self):
 
+    def _calculate_age(self):
+        """
+        Calculates the player's age as of January 1, 2025. 
+
+        The age is determined by comparing the player's birthday to the reference date. 
+        If the player's birthday has not occurred by January 1, 2025, 
+        their age is reduced by one. Returns `None` if the birthday is not provided.
+        """
+        reference_date = datetime(2025, 1, 1)
+
+        return reference_date.year - self.birthday.year - (
+                (reference_date.month, reference_date.day) < (self.birthday.month, self.birthday.day)
+        ) if self.birthday else None
+
     def __str__(self):
         """
         Returns a string representation of the player's information, 
@@ -155,11 +175,12 @@ class PlayerModel(BaseModel):
         return (
             f"PLAYER ID {self.player_id}\n"
             f"Name: {self.name}\n"
-            f"Position: {self.position}\n"
             f"Skill Rating: {self.skill_rating}\n"
+            f"Position: {self.position}\n"
+            f"Birthday: {self.birthday}\n"
+            f"Age: {self.age} (as of 01.01.2025)\n"
             f"Height: {self.height} cm\n"
             f"Weight: {self.weight} kg\n"
-            f"Birthday: {self.birthday}\n"
             f"Club ID: {self.club_id or '-'}\n"
             f"Country ID: {self.country_id}"
         )

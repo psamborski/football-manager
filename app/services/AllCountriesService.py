@@ -6,10 +6,11 @@ from app.resources.CountryResource import CountryResource
 from app.models.utils import reformat_country_data_from_db
 
 
-class CountryService:
+class AllCountriesService:
     """
     A service class that handles operations related to countries.
     Provides methods to interact with the database through resources and return formatted country data.
+    Created for operating on multiple countries' data.
     """
 
     @staticmethod

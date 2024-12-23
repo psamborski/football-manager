@@ -1,7 +1,7 @@
 from app.cli.GenericMenuCli import GenericMenuCli
 from app.cli._GenericViews.CountrySingleView import CountrySingleView
 
-from app.services.CountryService import CountryService
+from app.services.AllCountriesService import AllCountriesService
 
 
 class CountryAllView(GenericMenuCli):
@@ -9,7 +9,7 @@ class CountryAllView(GenericMenuCli):
         self.prompt = prompt
         self.breadcrumbs = breadcrumbs
 
-        self.countries_data = CountryService.get_all_countries()
+        self.countries_data = AllCountriesService.get_all_countries()
 
         super().__init__(
             menu_items=[country.name for country in self.countries_data],

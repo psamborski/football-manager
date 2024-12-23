@@ -1,14 +1,14 @@
 from app.cli.GenericMenuCli import GenericMenuCli
 from app.cli._GenericViews.PlayerSingleView import PlayerSingleView
 
-from app.services.PlayerService import PlayerService
+from app.services.AllPlayersService import AllPlayersService
 
 
 class CountrySingleView(GenericMenuCli):
     def __init__(self, country, players_limit=50, prompt="", breadcrumbs=""):
         self.country = country
         self.players_limit = players_limit
-        self.top_players_from_country = PlayerService.get_top_players_from_country(self.country.country_id, limit=self.players_limit)
+        self.top_players_from_country = AllPlayersService.get_top_players_from_country(self.country.country_id, limit=self.players_limit)
         self.prompt = prompt
         self.breadcrumbs = breadcrumbs
 

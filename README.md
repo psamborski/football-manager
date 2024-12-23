@@ -27,7 +27,8 @@ App structure:
     - added 28 leagues
     - added 386 real clubs associated with mentioned leagues
     - added proper nationalities
-- calculating team power [in progress]
+- adapted match simulating model to the new DB [in progress]
+- calculating team power
 - totally remodeled files structure for scalable app; it covers 7 basic app layers now
 
 ### v. 0.1

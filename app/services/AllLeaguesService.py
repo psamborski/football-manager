@@ -6,10 +6,11 @@ from app.resources.LeagueResource import LeagueResource
 from app.models.utils import reformat_league_data_from_db
 
 
-class LeagueService:
+class AllLeaguesService:
     """
     A service class that handles operations related to leagues.
     Provides methods to interact with the database through resources and return formatted league data.
+    Created for operating on multiple leagues data.
     """
 
     @staticmethod

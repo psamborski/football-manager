@@ -4,8 +4,11 @@ from app.resources.PlayerResource import PlayerResource
 from app.models.utils import reformat_player_data_from_db
 
 
-class PlayerService:
-    """ PlayerService provides functionality to fetch and process player-related data. """
+class AllPlayersService:
+    """
+    AllPlayersService provides functionality to fetch and process player-related data.
+    Created for operating on multiple players' data.
+    """
 
     @staticmethod
     def get_all_players(limit=100):

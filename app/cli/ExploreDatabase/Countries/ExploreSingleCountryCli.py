@@ -1,6 +1,6 @@
 from app.cli._GenericViews.CountrySingleView import CountrySingleView
 
-from app.services.PlayerService import PlayerService
+from app.services.AllPlayersService import AllPlayersService
 
 
 class ExploreSingleCountryCli(CountrySingleView):
