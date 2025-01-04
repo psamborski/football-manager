@@ -181,6 +181,10 @@ class ClubService:
 
         return first_eleven, remaining_players
 
+    def handle_red_card(self, card_receiver_id):
+        self.first_eleven.remove(card_receiver_id)
+        self.club_rating = self.calculate_club_rating()
+
     @staticmethod
     def _get_graphical_club_rating_repr(strength_rounded_to_halves):
         star_symbol = '★'
