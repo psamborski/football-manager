@@ -21,6 +21,10 @@ App structure:
 
 ## Changelog
 
+#### v. 0.2.1
+- Improved active menu item behavior while changing the page.
+- Added calculating first squad players function and, consequently, updated team power function.
+
 ### v. 0.2
 - reorganised and updated DB:
     - added 9k+ real players

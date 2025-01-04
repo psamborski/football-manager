@@ -2,6 +2,7 @@ from math import floor
 
 from app.models import ClubModel
 from app.services.AllPlayersService import AllPlayersService
+from app.services.constants import PLAYERS_POSITIONS_GROUPS
 
 
 class ClubService:
@@ -17,6 +18,10 @@ class ClubService:
             - overall_strength_to_halves (float): Overall strength rounded to the nearest half.
             - first_eleven_strength (float): The calculated strength for the first eleven players.
             - substitutes_strength (float): The calculated strength for substitute players.
+
+    Methods:
+        calculate_first_eleven: Determines the best eleven players for the club based on their skills and predefined formations.
+        calculate_club_rating: Calculates the overall strength and ratings of the club on a five-point scale.
     """
 
     def __init__(self, club_model: ClubModel):
@@ -29,6 +34,11 @@ class ClubService:
         self.club_id = club_model.club_id  # Unique identifier for the club.
         self.name = club_model.name  # The club's name.
         self.players_models = self.fetch_players_data()  # Fetch data for the club's players.
+
+        first_eleven, substitutes = self.calculate_first_eleven()
+        self.first_eleven = first_eleven
+        self.substitutes = substitutes
+
         self.club_rating = self.calculate_club_rating()  # Calculate the club's ratings.
 
     def fetch_players_data(self):
@@ -70,23 +80,19 @@ class ClubService:
             }
 
         AVG_5_STAR_TRESHOLD = 90  # team with 90 power has 5.0/5 rating
-        AVG_1_STAR_TRESHOLD = 40  # team with 40 power still has 1.0/5 rating
+        AVG_1_STAR_TRESHOLD = 45  # team with 45 power still has 1.0/5 rating
         SCALE = 5  # max stars number
 
         # Sort players by rating (highest to lowest)
         players.sort(key=lambda p: getattr(p, "skill_rating", 0), reverse=True)
 
-        # Divide players into first eleven and substitutes
-        first_eleven = players[:11]
-        substitutes = players[11:]
-
         # Calculate strength of the first eleven
-        first_eleven_strength = sum(getattr(player, "skill_rating", 0) for player in first_eleven) / 11
+        first_eleven_strength = sum(getattr(player, "skill_rating", 0) for player in self.first_eleven) / 11
 
         # Calculate strength of substitutes
         substitutes_strength = (
-            sum(getattr(player, "skill_rating", 0) for player in substitutes) / len(substitutes)
-            if substitutes else 0
+            sum(getattr(player, "skill_rating", 0) for player in self.substitutes) / len(self.substitutes)
+            if self.substitutes else 0
         )
 
         # Calculate average age and apply age-based modifier
@@ -119,6 +125,61 @@ class ClubService:
             "substitutes_strength": substitutes_strength,
             "graphical_club_rating": self._get_graphical_club_rating_repr(strength_rounded_to_halves)
         }
+    
+    def calculate_first_eleven(self):
+        """
+        Determines the optimal first eleven players for the club based on their skill ratings 
+        and predefined default formations.
+
+        The method uses a predefined formation to filter and select players for each position 
+        based on their ratings, leaving substitutes in the remaining players list.
+
+        Returns:
+            tuple: A tuple containing:
+                - first_eleven (list): A list of PlayerModel objects representing the best eleven players.
+                - remaining_players (list): A list of PlayerModel objects representing the substitutes.
+        """
+        default_formation = {
+            "goalkeepers": 1,
+            "right_backs": 1,
+            "left_backs": 1,
+            "central_backs": 2,
+            "left_midfielders": 1,
+            "right_midfielders": 1,
+            "central_midfielders": 2,
+            "forwards": 2
+        }
+
+        first_eleven = []  # List to store the selected players for the first eleven.
+        remaining_players = self.players_models  # Start with all players as unselected.
+
+        for formation_position, number_of_players in default_formation.items():
+            # Get possible specific player positions for the given formation position.
+            possible_specific_positions = PLAYERS_POSITIONS_GROUPS.get(formation_position, dict())
+
+            # Filter players matching the required positions.
+            possible_players = list(
+                filter(lambda p: p.position in possible_specific_positions.keys(), remaining_players))
+
+            # Sort the players by their skill ratings and scale by the position weight.
+            selected_players = sorted(
+                possible_players,
+                key=lambda p: getattr(p, "skill_rating", 0) * possible_specific_positions.get(p.position, 0.8),
+                reverse=True)[:number_of_players]
+
+            # Add the selected players to the first eleven.
+            first_eleven.extend(selected_players)
+
+            # Remove the selected players from the remaining player pool.
+            remaining_players = [p for p in remaining_players if p not in selected_players]
+
+        # Fill the remaining spots in the first eleven if less than 11 players are selected.
+        if len(first_eleven) < 11:
+            remaining_players.sort(key=lambda p: getattr(p, "skill_rating", 0), reverse=True)
+            first_eleven.extend(remaining_players[:(11 - len(first_eleven))])
+            remaining_players = remaining_players[(11 - len(first_eleven)):]
+
+        return first_eleven, remaining_players
 
     @staticmethod
     def _get_graphical_club_rating_repr(strength_rounded_to_halves):
