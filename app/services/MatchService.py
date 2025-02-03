@@ -1,3 +1,4 @@
+import copy
 import time
 from random import random, choices, choice
 
@@ -46,8 +47,8 @@ class MatchService:
             TEAMS_LOCAL_IDS[1]: 70,
         }
         self.stats = {
-            TEAMS_LOCAL_IDS[0]: {**TEAM_STATS_STRUCTURE},
-            TEAMS_LOCAL_IDS[1]: {**TEAM_STATS_STRUCTURE},
+            TEAMS_LOCAL_IDS[0]: copy.deepcopy(TEAM_STATS_STRUCTURE),
+            TEAMS_LOCAL_IDS[1]: copy.deepcopy(TEAM_STATS_STRUCTURE),
         }
 
     def play_match(self):
